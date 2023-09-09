@@ -25,28 +25,30 @@ plt.figure()
 plt.scatter(X[:,2] , X[:,3] , c = y , cmap=cmap , edgecolor='k', s=20)
 plt.show()
 
-# Creación de una instancia de la implementación de k-NN con k=5
-clf = KNN(k=5)
+k_values = [5,12,26,35]
+for i in range(len(k_values)):
+    # Creación de una instancia de la implementación de k-NN con k=5
+    clf = KNN(k=k_values[i])
 
-# Ajuste del modelo k-NN a los datos de entrenamiento
-clf.fit(X_train, y_train)
+    # Ajuste del modelo k-NN a los datos de entrenamiento
+    clf.fit(X_train, y_train)
 
-# Realización de predicciones en los datos de prueba
-predictions = clf.predict(X_test)
+    # Realización de predicciones en los datos de prueba
+    predictions = clf.predict(X_test)
 
-# Impresión de las predicciones
-print("Predicciones:")
-print(predictions)
+    # Impresión de las predicciones
+    print("Predicciones:")
+    print(predictions)
 
-# Cálculo de la precisión del modelo
-acc = np.sum(predictions == y_test) / len(y_test)
-print(acc)
+    # Cálculo de la precisión del modelo
+    acc = np.sum(predictions == y_test) / len(y_test)
+    print(acc)
 
-# Calcular la matriz de confusión
-confusion = confusion_matrix(y_test, predictions)
-print("Matriz de Confusión:")
-print(confusion)
+    # Calcular la matriz de confusión
+    confusion = confusion_matrix(y_test, predictions)
+    print("Matriz de Confusión:")
+    print(confusion)
 
-# Calcular el puntaje F1
-f1 = f1_score(y_test, predictions, average='weighted')
-print("Puntaje F1:", f1)
+    # Calcular el puntaje F1
+    f1 = f1_score(y_test, predictions, average='weighted')
+    print("Puntaje F1:", f1)

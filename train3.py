@@ -15,8 +15,10 @@ X, y = digits.data, digits.target
 # División del conjunto de datos en conjuntos de entrenamiento y prueba
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1234)
 
-# Creación de una instancia de la implementación de k-NN con k=5
-clf = KNN(k=5)
+k_values = [5,12,26,35]
+for i in range(len(k_values)):
+    # Creación de una instancia de la implementación de k-NN con k=5
+    clf = KNN(k=k_values[i])
 
 # Ajuste del modelo k-NN a los datos de entrenamiento
 clf.fit(X_train, y_train)
